@@ -1,0 +1,23 @@
+---
+logrotate_conf_file: '/etc/logrotate.conf'
+logrotate_conf_dir: '/etc/logrotate.d'
+logrotate_cron_file: '/etc/cron.daily/logrotate'
+# logrotate_scripts: []
+
+logrotate_freq: 'weekly'
+logrotate_backlogs: 4
+logrotate_new_files: 'create'
+logrotate_suffix: 'dateext'
+logrotate_compress: false
+
+logrotate_wtmp_dir: '/var/log/wtmp'
+logrotate_wtmp_freq: 'monthly'
+logrotate_wtmp_perms: 'create 0664 root utmp'
+logrotate_wtmp_minsize: '1M'
+logrotate_wtmp_backlog: 1
+
+logrotate_btmp_dir: '/var/log/btmp'
+logrotate_btmp_status: 'missingok'
+logrotate_btmp_freq: 'monthly'
+logrotate_btmp_perms: 'create 0600 root utmp'
+logrotate_btmp_backlog: 1

@@ -1,0 +1,31 @@
+# Sets up log rotation on RHEL systems
+# Usage: ansible-playbook logrotate.yml
+---
+- name: 'Set up logrotate.conf'
+  template:
+    src: logrotate_conf.j2
+    dest: "{{ logrotate_conf_file }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  tags:
+    - logrotate
+
+- name: 'Ensure logrotate is in cron.daily'
+  template:
+    src: logrotate_cron.j2
+    dest: "{{ logrotate_cron_file }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0700'
+  tags:
+    - logrotate
+
+# - name: 'Set up logrotate.d scripts'
+#  template:
+#    src: logrotate_d.j2
+#    dest: "{{ logrotate_conf_dir }}/{{ item }}"
+#  loop: "{{ logrotate_d_items }}"
+#  notify: Restart logrotate
+#  tags:
+#    - logrotate
